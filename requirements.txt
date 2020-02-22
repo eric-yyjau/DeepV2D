@@ -1,0 +1,9 @@
+# tensorflow-gpu==1.12.0
+h5py
+easydict
+scipy
+opencv-python
+pyyaml
+toposort
+vtk
+
