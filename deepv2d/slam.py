@@ -58,6 +58,7 @@ class DeepV2DSLAM:
         self.images = []
         self.depths = []
         self.poses = []
+        self.tstamps = []
 
         # tracking config parameters
         self.n_keyframes = n_keyframes # number of keyframes to use
@@ -529,7 +530,7 @@ class DeepV2DSLAM:
         return pose_distance(dP)
 
 
-    def __call__(self, image, intrinsics=None):
+    def __call__(self, image, intrinsics=None, tstamp=0):
 
         if intrinsics is not None:
             self.intrinsics = intrinsics
@@ -542,6 +543,7 @@ class DeepV2DSLAM:
                 self.images.append(image)
                 self.depths.append(np.ones((ht, wd)))
                 self.poses.append(np.eye(4))
+                self.tstamps.append(tstamp)
 
             # initialize the tracker !
             if len(self.images) == 4:
@@ -578,6 +580,7 @@ class DeepV2DSLAM:
                 self.images.append(image)
                 self.depths.append(np.ones((ht, wd)))
                 self.poses.append(self.pose_cur)
+                self.tstamps.append(tstamp)
 
                 self.update_poses(fixed=2)
                 self.update_depths()

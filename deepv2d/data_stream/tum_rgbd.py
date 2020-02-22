@@ -92,7 +92,7 @@ class TUM_RGBD:
             image_file = os.path.join(sequence_dir, image_file)
             image = cv2.imread(image_file)
 
-            yield image, intrinsics_mat
+            yield image, intrinsics_mat, tstamp
 
         #     images.append(image)
 
