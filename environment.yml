@@ -1,7 +1,8 @@
-name: py36-deepv2d
+name: py37-deepv2d
 channels:
   - defaults
 dependencies:
+  - _libgcc_mutex=0.1=main
   - _tflow_select=2.1.0=gpu
   - absl-py=0.7.1=py37_0
   - astor=0.7.1=py37_0
@@ -62,6 +63,7 @@ dependencies:
     - defusedxml==0.6.0
     - easydict==1.9
     - entrypoints==0.3
+    - google-pasta==0.1.8
     - ipykernel==5.1.1
     - ipython==7.5.0
     - ipython-genutils==0.2.0
@@ -101,9 +103,11 @@ dependencies:
     - testpath==0.4.2
     - toposort==1.5
     - tornado==6.0.2
+    - tqdm==4.43.0
     - traitlets==4.3.2
     - vtk==8.1.2
     - wcwidth==0.1.7
     - webencodings==0.5.1
-prefix: /home/yyjau/anaconda3/envs/py36-deepv2d
+    - wrapt==1.12.0
+prefix: /home/yoyee/miniconda3/envs/py37-deepv2d
 

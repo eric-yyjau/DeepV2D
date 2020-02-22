@@ -19,6 +19,7 @@ from data_stream.kitti import KittiRaw
 from core import config
 from slam import DeepV2DSLAM
 from slam_kitti import DeepV2DSLAM_KITTI
+from tqdm import tqdm
 
 
 
@@ -30,6 +31,7 @@ def main(args):
         model = 'models/kitti.ckpt'
         slam = DeepV2DSLAM_KITTI(cfg, model, n_keyframes=args.n_keyframes)
 
+        # dataset_dir = '/media/datadrive/data/KITTI/raw'
         dataset_dir = '/media/datadrive/data/KITTI/raw'
         db = KittiRaw(dataset_dir)
 
@@ -67,7 +69,7 @@ def main(args):
         slam.set_session(sess)
         slam.start_visualization(args.cinematic, args.render_path, args.clear_points)
 
-        for (image, intrinsics) in db.iterate_sequence(args.sequence):
+        for (image, intrinsics) in tqdm(db.iterate_sequence(args.sequence) ):
             slam(image, intrinsics)
 
 

@@ -6,4 +6,4 @@ opencv-python
 pyyaml
 toposort
 vtk
-
+tqdm
