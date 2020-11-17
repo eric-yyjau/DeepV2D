@@ -1,6 +1,6 @@
 import sys
 sys.path.append('deepv2d')
-# sys.path.append('')
+sys.path.append('/home/yoyee/Documents/deep_keyframe/')
 
 import numpy as np
 import tensorflow as tf
@@ -93,13 +93,22 @@ def main(args):
         tstamps = np.array(slam.tstamps).reshape(-1, 1)
         poses = np.array(poses).reshape(-1, 16)
         poses = poses[:,:12]
-        print(f"poses: {poses}")
+        # print(f"poses: {poses}")
         print(f"poses: {poses.shape}")
         print(f"tstamps: {tstamps.shape}")
         t_poses = np.concatenate((tstamps, poses), axis=1)
         Path(args.save_poses).mkdir(exist_ok=True, parents=True)
-        np.savetxt(f"{args.save_poses}/poses.txt", t_poses, delimiter=" ")
-
+        save_file = f"{args.save_poses}/poses.txt"
+        np.savetxt(save_file, t_poses, delimiter=" ")
+        print(f"save to: {save_file}")
+        
+# def kitti_to_tum(file):
+#     ## to tum style
+#     from utils.eval_utils import Eval_frontend
+#     eval_fe = Eval_frontend()
+#     tum_file = eval_fe.kitti_wTime_tum(file)
+#     print(f"save: {tum_file}")
+        
 
 
 if __name__ == '__main__':
